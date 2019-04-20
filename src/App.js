@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
+import loading from './loading.gif';
 
 class App extends Component {
   constructor() {
@@ -84,10 +85,10 @@ class App extends Component {
     } else {
 
       return (
-        <div>
-          <header className = "App-header">
-            <p className = "App-link"> loading... </p>
-          </header>
+        <div className="App-header">
+          loading...
+        <br />
+          <img src={loading} alt="" />
         </div>
       )
     }
