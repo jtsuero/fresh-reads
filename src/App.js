@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import './App.css';
-import  RedditSort from './Reddit.js';
 
 class App extends Component {
   constructor() {
@@ -82,37 +81,6 @@ class App extends Component {
 
 
   render() {
-    this.getStories()
-    this.getReddit()
-    if(!this.state.isGitLoaded) {
-      this.getGit()
-      this.setState({isGitLoaded: true})
-    }
-    if (this.state.eachStory !== null && this.state.gitStories !== null && this.state.redditStories){
-      return (
-        <div>
-          <header className = "App-header">
-            <h1>Top HackerNews Stories</h1>
-            {this.state.eachStory && this.state.eachStory.map((story) => {
-              if (story.score > 120 && story.url) {
-                return <p><a href = {story.url} className = "App-link">{story.title}</a></p>
-              }
-            })}
-            <h1>Top Github Repos</h1>
-            {this.state.gitStories && this.state.gitStories.map((repo) => {
-              return <div className = "App-link">
-                <p><a href = {repo.svn_url} className = "App-link">{repo.name}</a></p>
-                <span>{repo.description}</span>
-              </div>
-            })}
-            <h1>Top Posts Reddit</h1>
-            <div>
-              <RedditSort stories = {this.state.redditStories}/>
-            </div>
-          </header>
-        </div>
-      )
-
     } else {
 
       return (
