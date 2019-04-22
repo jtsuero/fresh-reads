@@ -9,7 +9,7 @@ class App extends Component {
     super()
     this.state = {
       gitRepos: null,
-      hackerNews: null,
+      hackerStories: null,
       redditStories: null
     }
   }
@@ -23,39 +23,39 @@ class App extends Component {
 
   getGit = () => {
     FetchStories.getGit().then((gitRepos) => {
-      this.setState({gitRepos: gitRepos})
+      this.setState({gitRepos})
     });
   }
 
   getHackerNews = () => {
     FetchStories.getHackerNews().then((hackerStories) => {
-     this.setState({hackerNews: hackerStories});
+      this.setState({hackerStories});
     });
   }
 
   //Gives back array of objects of title and link
   getReddit = () => {
     FetchStories.getReddit().then((redditStories) => {
-          this.setState({redditStories: redditStories})
+      this.setState({redditStories: redditStories})
     });
   }
 
 
   render() {
     if(this.state.redditStories !== null && this.state.gitRepos !== null & this.state.hackerNews !== null) {
-    return (
-      <div className = "App-link">
-      <header className = "App-header">
-      <StoryRender redditStories = {this.state.redditStories} gitRepos = {this.state.gitRepos} hackerNews = {this.state.hackerNews}/>
-      </header>
-      </div>
-    )	
+      return (
+        <div className = "App-link">
+          <header className = "App-header">
+            <StoryRender redditStories = {this.state.redditStories} gitRepos = {this.state.gitRepos} hackerNews = {this.state.hackerStories}/>
+          </header>
+        </div>
+      )	
     } else {
       return (
         <div className="App-header">
           loading...
-        <br />
-          <img src={loading} alt="" />
+            <br />
+            <img src={loading} alt="" />
         </div>
       )
     }
