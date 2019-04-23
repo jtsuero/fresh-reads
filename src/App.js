@@ -33,30 +33,41 @@ class App extends Component {
     });
   }
 
-  //Gives back array of objects of title and link
   getReddit = () => {
     FetchStories.getReddit().then((redditStories) => {
-      this.setState({redditStories: redditStories})
+      this.setState({redditStories})
     });
   }
 
+  renderLoadingHeader = () => {
+    return (
+      <div className="App-header">
+        loading...
+        <br />
+        <img src={loading} alt="" />
+      </div>
+    )
+  }
+
+  renderStories = () => {
+    return (
+      <div className = "App-link">
+        <header className = "App-header">
+          <StoryRender redditStories = {this.state.redditStories} gitRepos = {this.state.gitRepos} hackerNews = {this.state.hackerStories}/>
+        </header>
+      </div>
+
+    )
+  }
 
   render() {
     if(this.state.redditStories !== null && this.state.gitRepos !== null & this.state.hackerNews !== null) {
       return (
-        <div className = "App-link">
-          <header className = "App-header">
-            <StoryRender redditStories = {this.state.redditStories} gitRepos = {this.state.gitRepos} hackerNews = {this.state.hackerStories}/>
-          </header>
-        </div>
+        this.renderStories()
       )	
     } else {
       return (
-        <div className="App-header">
-          loading...
-            <br />
-            <img src={loading} alt="" />
-        </div>
+        this.renderLoadingHeader()
       )
     }
   }

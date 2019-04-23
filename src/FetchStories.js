@@ -40,7 +40,7 @@ class FetchStories {
     const headers = {"Authorization": "token 2dadcf6008f73aae2f5307d95d15a1aa1407086f"};
     const today = new Date();
     const year = today.getFullYear();
-    const starGazers = 200; //number of people following that particular Repo
+    const minStarGazers = 200; //number of people following that particular Repo
     let day = today.getDate();
     let month = today.getMonth();
     let popularRepos = [];
@@ -59,7 +59,7 @@ class FetchStories {
       .then(res => res.json())
       .then((result) => {
         for(let i=0; i<result.items.length; i++) {
-          if (result.items[i].stargazers_count >= starGazers) {
+          if (result.items[i].stargazers_count >= minStarGazers) {
             popularRepos.push({title: result.items[i].name, link: result.items[i].svn_url});
           }
         }

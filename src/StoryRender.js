@@ -7,9 +7,11 @@ class StoryRender extends Component {
   }
 
   renderList = (story) => {
-    return  <div>
-      <p><a href = {story.link} className = "App-link">{story.title} </a></p>
+    return (
+      <div>
+        <p><a href = {story.link} className = "App-link">{story.title} </a></p>
       </div>
+    )
   }
 
   render() {
