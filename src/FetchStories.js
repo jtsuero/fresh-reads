@@ -19,7 +19,7 @@ class FetchStories {
   static getHackerNews() {
     const hackerNewsUrl = "https://hacker-news.firebaseio.com/v0/beststories.json?print=pretty";
     const storyScore = 150;
-    return fetch(`${hackerNewsUrl}`)
+    return fetch(hackerNewsUrl)
       .then(res => res.json())
       .then((result) => {
         let storyHolder = [];
