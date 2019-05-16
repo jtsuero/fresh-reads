@@ -2,9 +2,6 @@ import React, { Component } from 'react';
 import './App.css';
 
 class StoryRender extends Component {
-  constructor(props) {
-    super(props);
-  }
 
   renderList = (story) => {
     return (
@@ -15,12 +12,9 @@ class StoryRender extends Component {
   }
 
   render() {
-    let redditStories = this.props.redditStories;
-    let gitRepos = this.props.gitRepos;
-    let hackerNews = this.props.hackerNews;
-    let redditLinks = redditStories.map(this.renderList);
-    let gitLinks = gitRepos.map(this.renderList);
-    let hackerLinks = hackerNews.map(this.renderList);
+    let redditLinks = this.props.redditStories.map(this.renderList);
+    let gitLinks = this.props.gitRepos.map(this.renderList);
+    let hackerLinks = this.props.hackerNews.map(this.renderList);
     return(
       <div className = "App-link">
         <h1> GitHub Repos </h1>
