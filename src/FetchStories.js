@@ -51,9 +51,9 @@ class FetchStories {
       month = "0" + month;
     }
 
-    const date = year + "-"+ month + "-" + day;
 
-    const gitHubUrl = `https://api.github.com/search/repositories?q=created:>${date}&sort=stars&order=desc`
+    let popularRepos = [];
+    const gitHubUrl = `https://api.github.com/search/repositories?q=created:>${year}-${month}-${day}&sort=stars&order=desc`
     return fetch(`${gitHubUrl}`, headers)
       .then(res => res.json())
       .then((result) => {
