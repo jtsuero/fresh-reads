@@ -26,7 +26,7 @@ class App extends Component {
   }
 
   getHackerNews = () => {
-    FetchStories.getHackerNews().then((hackerStories) => {
+    FetchStories.getTopHackerNewsStories().then((hackerStories) => {
       this.setState({hackerStories});
     });
   }

@@ -16,24 +16,37 @@ class FetchStories {
       });
   }
 
-  static getHackerNews() {
+  static getHackerNewsStory(storyId) {
+    return fetch(`https://hacker-news.firebaseio.com/v0/item/${storyId}.json?print=pretty`)
+      .then(res => res.json())
+      .then(story => {
+          return {title: story.title, link: story.url, score: story.score};
+        }
+      );
+  }
+
+  static getHackerNewsStoriesIds() {
     const hackerNewsUrl = "https://hacker-news.firebaseio.com/v0/beststories.json?print=pretty";
-    const storyScore = 150;
+    // const storyScore = 150;
     return fetch(hackerNewsUrl)
       .then(res => res.json())
-      .then((result) => {
-        let storyHolder = [];
-        for(let i=0; i<result.length; i++) {
-          fetch(`https://hacker-news.firebaseio.com/v0/item/${result[i]}.json?print=pretty`)
-            .then(res => res.json())
-            .then((story) => {
-              if(story.score > storyScore && story.url) {
-                storyHolder.push({title: story.title, link: story.url});
-              }
-            });
-        }
-        return storyHolder;
+  }
+
+  static getTopHackerNewsStories() {
+    const minStoryScore = 150;
+    return this.getHackerNewsStories().then(stories => {
+      return stories.filter(story => story.score > minStoryScore && story.link);
+    });
+  }
+
+  static getHackerNewsStories() {
+    return this.getHackerNewsStoriesIds().then(storyIds => {
+    let storyRequests = [];
+      storyIds.forEach(storyId => {
+        storyRequests.push(this.getHackerNewsStory(storyId));
       });
+      return Promise.all(storyRequests)
+    });
   }
 
   static getGit() {
