@@ -60,7 +60,7 @@ class App extends Component {
   }
 
   render() {
-    if(this.state.redditStories !== null && this.state.gitRepos !== null & this.state.hackerNews !== null) {
+    if(this.state.redditStories !== null && this.state.gitRepos !== null & this.state.hackerStories !== null) {
       return (
         this.renderStories()
       )	
