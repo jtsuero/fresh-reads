@@ -14,7 +14,6 @@ class App extends Component {
     }
   }
 
-  //have the calls live in component did mount, call out to module
   componentDidMount = () => {
     this.getReddit();
     this.getHackerNews();
