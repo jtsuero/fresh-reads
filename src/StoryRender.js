@@ -12,9 +12,9 @@ class StoryRender extends Component {
   }
 
   render() {
-    let redditLinks = this.props.redditStories.map(this.renderList);
-    let gitLinks = this.props.gitRepos.map(this.renderList);
-    let hackerLinks = this.props.hackerNews.map(this.renderList);
+    const redditLinks = this.props.redditStories.map(this.renderList);
+    const gitLinks = this.props.gitRepos.map(this.renderList);
+    const hackerLinks = this.props.hackerNews.map(this.renderList);
     return(
       <div className = "App-link">
         <h1> GitHub Repos </h1>
