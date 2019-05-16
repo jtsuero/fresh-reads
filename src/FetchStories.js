@@ -43,7 +43,6 @@ class FetchStories {
     const minStarGazers = 200; //number of people following that particular Repo
     let day = today.getDate();
     let month = today.getMonth();
-    let popularRepos = [];
 
     if (day < 10) {
       day = "0" + day;
