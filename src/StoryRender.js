@@ -12,17 +12,14 @@ class StoryRender extends Component {
   }
 
   render() {
-    const redditLinks = this.props.redditStories.map(this.renderList);
-    const gitLinks = this.props.gitRepos.map(this.renderList);
-    const hackerLinks = this.props.hackerNews.map(this.renderList);
+    if(!this.props.stories) {
+      return null;
+    }
+    const stories = this.props.stories.map(this.renderList);
     return(
       <div>
-        <h1 className='stories-list-header'> GitHub Repos </h1>
-          {gitLinks}
-        <h1 className='stories-list-header'> Hacker News </h1>
-          {hackerLinks}
-        <h1 className='stories-list-header'> Reddit Posts </h1>
-          {redditLinks}
+        <h1 className='stories-list-header'>{this.props.sourceName}</h1>
+        {stories}
       </div>
     )
   }
