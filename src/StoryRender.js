@@ -5,7 +5,9 @@ class StoryRender extends Component {
 
   renderList = (story) => {
     return (
-        <p><a href = {story.link} className='app-link'>{story.title} </a></p>
+      <div className='link-box'>
+        <a href={story.link} className='link'>{story.title}</a>
+      </div>
     )
   }
 

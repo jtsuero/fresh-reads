@@ -1,8 +1,8 @@
 body {
   background-color: #282c34;
+  margin: 20px;
+  padding: 0;
   font-size: 18px;
-  padding: 100px;
-  border: 10px solid floral white;
 }
 
 .stories-list-header {
@@ -10,9 +10,22 @@ body {
   text-align: center;
 }
 
-.app-link {
+.link-box {
+  margin: 15px;
+}
+
+.link:hover {
+  background-color: white;
+  border: 5px solid #163F9E;
+}
+
+.link {
   font-size: 0.8em;
+  margin: 15px;
+  padding: 5px;
   color: #96BCD0;
 }
+
+
 
 
