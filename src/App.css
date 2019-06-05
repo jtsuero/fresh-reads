@@ -1,7 +1,6 @@
 body {
   background-color: #282c34;
-  margin: 20px;
-  padding: 0;
+  padding: 20px;
   font-size: 18px;
 }
 
@@ -21,7 +20,6 @@ body {
 
 .link {
   font-size: 0.8em;
-  margin: 15px;
   padding: 5px;
   color: #96BCD0;
 }
