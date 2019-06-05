@@ -37,9 +37,9 @@ class App extends Component {
     });
   }
 
-  renderLoadingHeader = () => {
+  renderLoading = () => {
     return (
-      <div className="App-header">
+      <div>
         loading...
       </div>
     )
@@ -47,10 +47,8 @@ class App extends Component {
 
   renderStories = () => {
     return (
-      <div className = "App-link">
-        <header className = "App-header">
-          <StoryRender redditStories = {this.state.redditStories} gitRepos = {this.state.gitRepos} hackerNews = {this.state.hackerStories}/>
-        </header>
+      <div>
+         <StoryRender redditStories = {this.state.redditStories} gitRepos = {this.state.gitRepos} hackerNews = {this.state.hackerStories}/>
       </div>
 
     )
@@ -63,7 +61,7 @@ class App extends Component {
       )	
     } else {
       return (
-        this.renderLoadingHeader()
+        this.renderLoading()
       )
     }
   }
