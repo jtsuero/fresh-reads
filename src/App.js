@@ -19,22 +19,19 @@ class App extends Component {
 
   getGit = () => {
     FetchStories.getGit().then((gitRepos) => {
-      let sourceName = "Github Repos";
-      this.setStoriesFromSource(gitRepos, sourceName);
+      this.setStoriesFromSource(gitRepos, "Github Repos");
     });
   }
 
   getHackerNews = () => {
     FetchStories.getTopHackerNewsStories().then((hackerStories) => {
-      let sourceName = "Hacker News";
-      this.setStoriesFromSource(hackerStories, sourceName);
+      this.setStoriesFromSource(hackerStories, "Hacker News");
     });
   }
 
   getReddit = () => {
     FetchStories.getReddit().then((redditStories) => {
-      let sourceName = "Reddit Stories";
-      this.setStoriesFromSource(redditStories, sourceName);
+      this.setStoriesFromSource(redditStories, "Reddit Stories");
     });
   }
 
