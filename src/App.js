@@ -7,9 +7,7 @@ class App extends Component {
   constructor() {
     super()
     this.state = {
-      gitRepos: null,
-      hackerStories: null,
-      redditStories: null
+      storySources: {},
     }
   }
 
@@ -21,20 +19,26 @@ class App extends Component {
 
   getGit = () => {
     FetchStories.getGit().then((gitRepos) => {
-      this.setState({gitRepos})
+      this.setStoriesFromSource(gitRepos, "Github Repos");
     });
   }
 
   getHackerNews = () => {
     FetchStories.getTopHackerNewsStories().then((hackerStories) => {
-      this.setState({hackerStories});
+      this.setStoriesFromSource(hackerStories, "Hacker News");
     });
   }
 
   getReddit = () => {
     FetchStories.getReddit().then((redditStories) => {
-      this.setState({redditStories})
+      this.setStoriesFromSource(redditStories, "Reddit Stories");
     });
+  }
+
+  setStoriesFromSource(stories, sourceName) {
+    const storySources = Object.assign({}, this.state.storySources);
+    storySources[sourceName] = stories;
+    this.setState({storySources});
   }
 
   renderLoading = () => {
@@ -46,16 +50,21 @@ class App extends Component {
   }
 
   renderStories = () => {
+    const sourceNames = Object.keys(this.state.storySources)
+
     return (
       <div>
-         <StoryRender redditStories = {this.state.redditStories} gitRepos = {this.state.gitRepos} hackerNews = {this.state.hackerStories}/>
+         {sourceNames.map(sourceName => {
+            const stories = this.state.storySources[sourceName]
+            return <StoryRender stories={stories} sourceName={sourceName} />
+         })}
       </div>
 
     )
   }
 
   render() {
-    if(this.state.redditStories !== null && this.state.gitRepos !== null & this.state.hackerStories !== null) {
+    if(Object.keys(this.state.storySources).length > 0) {
       return (
         this.renderStories()
       )	
