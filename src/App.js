@@ -19,26 +19,29 @@ class App extends Component {
 
   getGit = () => {
     FetchStories.getGit().then((gitRepos) => {
-      const storySources = Object.assign({}, this.state.storySources);
-      storySources["Github Repos"] = gitRepos;
-      this.setState({storySources});
+      let sourceName = "Github Repos";
+      this.setStoriesFromSource(gitRepos, sourceName);
     });
   }
 
   getHackerNews = () => {
     FetchStories.getTopHackerNewsStories().then((hackerStories) => {
-      const storySources = Object.assign({}, this.state.storySources);
-      storySources["Hacker News"] = hackerStories;
-      this.setState({storySources});
+      let sourceName = "Hacker News";
+      this.setStoriesFromSource(hackerStories, sourceName);
     });
   }
 
   getReddit = () => {
     FetchStories.getReddit().then((redditStories) => {
-      const storySources = Object.assign({}, this.state.storySources);
-      storySources["Reddit Stories"] = redditStories;
-      this.setState({storySources});
+      let sourceName = "Reddit Stories";
+      this.setStoriesFromSource(redditStories, sourceName);
     });
+  }
+
+  setStoriesFromSource(stories, sourceName) {
+    const storySources = Object.assign({}, this.state.storySources);
+    storySources[sourceName] = stories;
+    this.setState({storySources});
   }
 
   renderLoading = () => {
