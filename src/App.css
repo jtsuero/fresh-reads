@@ -1,29 +1,44 @@
 body {
   background-color: #282c34;
   padding: 20px;
-  font-size: 18px;
+  font-size: 16px;
+}
+
+.app-name {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: white;
+  width: 100%;
+  text-align: center;
+  padding: 5rem 0;
+}
+
+.main-container {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  justify-content: space-around;
+}
+
+.stories-container {
+}
+
+.source-container {
+  width: 33%;
 }
 
 .stories-list-header {
   color: white;
-  text-align: center;
+  font-size: 1.5rem;
 }
 
 .link-box {
   margin: 15px;
 }
 
-.link:hover {
-  background-color: white;
-  border: 5px solid #163F9E;
-}
-
 .link {
-  font-size: 0.8em;
+  font-size: 1em;
   padding: 5px;
-  color: #96BCD0;
+  color: #96bcd0;
+  text-decoration: none;
 }
-
-
-
-
